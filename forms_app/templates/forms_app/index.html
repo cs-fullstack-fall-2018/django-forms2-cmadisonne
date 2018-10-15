@@ -13,7 +13,7 @@
 				<p>Recipe: {{ eachItem.recipe }}</p>
 				<p>Time Cook: {{ eachItem.timeCook }}</p>
 				<p>{{ eachItem.dateCreated }}</p>
-				<a href="{% url 'edit' pk=form.pk %}">Edit</a>
+				<a href="{% url 'edit' pk=eachItem.pk %}">Edit</a>
 				<hr/>
 			{% endfor %}
 		</ul>

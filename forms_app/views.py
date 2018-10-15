@@ -30,11 +30,6 @@ def recipe_edit(request, pk):
     if request.method == "GET":
         form = Form(request.GET)
         if form.is_valid():
-            form = form.save(commit=False)
-            form.name = form.cleaned_data['name']
-            form.recipe = form.cleaned_data['recipe']
-            form.timeCook = form.cleaned_data['timeCook']
-            form.dateCreated = timezone.now()
             form.save()
             return redirect('index', pk=form.pk)
     else:
