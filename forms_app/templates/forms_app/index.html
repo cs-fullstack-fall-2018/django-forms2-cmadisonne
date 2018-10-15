@@ -1,17 +1,26 @@
+{% extends "forms_app/base.html" %}
 {# Testing here #}
+{% block body %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'forms_app/bootstrap.css' %}">
 <div class="jumbotron">
-	<p>This is the forms app</p>
+	<h1>Recipe Book</h1>
 </div>
 	{% if form_list %}
 		<ul>
 			{% for eachItem in form_list %}
-				<li>{{ eachItem.name }}</li>
+				<h3>{{ eachItem.name }}</h3>
+				<p>Recipe: {{ eachItem.recipe }}</p>
+				<p>Time Cook: {{ eachItem.timeCook }}</p>
+				<p>{{ eachItem.dateCreated }}</p>
+				<a href="{% url 'edit' pk=form.pk %}">Edit</a>
+				<hr/>
 			{% endfor %}
 		</ul>
 		{% else %}
-		<p>Nothing available.</p>
+		<p>No Recipes available.</p>
 	{% endif %}
+<a href="{% url 'form_name_view' %}">Add New Recipe</a>
 <script src="{% static 'forms_app/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'forms_app/bootstrap.js' %}"></script>
+{% endblock %}
